@@ -1,16 +1,16 @@
 # handoff-clear
 
-Skill de Claude Code que arma un prompt corto de traspaso antes de un `/clear`.
+Skill de Claude Code que arma un prompt corto para seguir el trabajo en una sesión nueva, después de un `/clear` o en otro chat.
 
 ## Para qué sirve
 
-En las sesiones largas, cada respuesta reenvía todo el historial y el consumo sube mucho. Conviene cerrar cada tarea con `/clear` y arrancar limpio, pero sin perder el hilo. La skill:
+Las sesiones largas consumen más y, cuando se compactan, pierden las restricciones que solo se dijeron en el chat. Conviene arrancar limpio en cada hito (por ejemplo, al aprobar un intent y pasar a implementarlo) sin perder el hilo. La skill:
 
-1. junta el estado de la sesión: los commits, lo que quedó sin pushear, el ledger del plan y lo que se tocó afuera del repo;
-2. guarda en la memoria o en `intent/` las decisiones que todavía no estén escritas;
-3. devuelve un prompt de hasta 250 palabras, en un bloque de código, con solo lo que se perdería con el `/clear`. Lo que la sesión nueva carga sola (CLAUDE.md, la memoria y git) no se repite.
+1. junta el estado de la sesión: commits o archivos tocados, lo que quedó sin pushear, el avance del plan y lo que se tocó fuera del repo;
+2. guarda las decisiones que todavía no estén escritas, según su alcance: de una feature, en su intent (con tu OK si ya está aprobado); de todo el proyecto, en su CLAUDE.md, solo con tu OK; el resto, en la memoria;
+3. devuelve un prompt de hasta 250 palabras (más el encargo textual, si no hay intent) que apunta al intent en vez de reescribir la idea, y que le pide a la sesión nueva confirmar objetivo, límites y próximo paso antes de arrancar.
 
-Después hacés `/clear` y pegás el prompt. La skill no puede ejecutar `/clear` por vos: es un comando del cliente.
+Después hacés `/clear` y pegás el prompt, o le pedís que lo lance en un chat nuevo con `/orca-cli` (requiere Orca).
 
 ## Instalación
 
