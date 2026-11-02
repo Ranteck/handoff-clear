@@ -22,7 +22,7 @@ La sesión nueva carga sola CLAUDE.md y la memoria; `intent/` y git, no. El prom
    - **Lo próximo:** la tarea siguiente y cómo arrancarla;
    - **Pendientes:** solo los que no están en un archivo, o dónde están;
    - **Al arrancar:** "Antes de planear o delegar, devolvé en tres líneas el objetivo, los límites y el próximo paso. Preguntá solo si falta algo o hay contradicciones." Si hay una orquestación en curso, sumá antes: "Retomala y revisá su bandeja; no crees otra ni relances workers."
-3. **Entregarlo en un solo bloque de código.** Si el usuario pide abrir un chat nuevo, lanzalo con `/orca-cli` y ese prompt. Si no, debajo: "Pegalo después de `/clear` o en un chat nuevo."
+3. **Abrirlo en una pestaña nueva de Orca** con `/orca-cli`: `terminal create` (no `agent launch`, que no elige perfil) en la carpeta del proyecto, con el comando del perfil de Claude que diga el usuario; si no lo dijo, preguntalo. Pasale el prompt desde un archivo temporal, con `--command` entre comillas simples para que lo expanda la pestaña: `'<comando> -- "$(cat <archivo>)"'`. Para `/clear` en este chat o sin Orca, entregalo en un solo bloque de código con: "Pegalo después de `/clear` o en un chat nuevo."
 
 ## Reglas
 

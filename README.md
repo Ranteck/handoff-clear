@@ -10,7 +10,7 @@ Las sesiones largas consumen más y, cuando se compactan, pierden las restriccio
 2. guarda las decisiones que todavía no estén escritas según su alcance (intent de la feature, instrucciones del proyecto o globales, o memoria), con tu OK antes de editar instrucciones o un intent aprobado;
 3. devuelve un prompt de hasta 250 palabras (más el encargo textual, si no hay intent) que apunta al intent en vez de reescribir la idea, y que le pide a la sesión nueva confirmar objetivo, límites y próximo paso antes de arrancar.
 
-Después hacés `/clear` y pegás el prompt, o le pedís que lo lance en un chat nuevo con `/orca-cli` (requiere Orca).
+La skill lo abre en una pestaña nueva de Orca con el comando de Claude de tu perfil (por ejemplo, tu alias). Si vas a hacer `/clear` en el mismo chat o no tenés Orca, te lo da para pegar.
 
 ## Instalación
 
