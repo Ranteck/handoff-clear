@@ -17,12 +17,12 @@ La sesión nueva carga sola CLAUDE.md y la memoria; `intent/` y git, no. El prom
 2. **Escribir el prompt,** con un máximo de 250 palabras sin contar el encargo citado, y en este orden:
    - una línea con el proyecto, la rama si hay git y la skill de proceso que hay que usar;
    - **Leer primero:** solo la ruta del intent vigente o, si no hay, el encargo del usuario citado textual. Es la única descripción de la idea en el prompt.
-   - **Estado:** qué quedó hecho, con el rango de commits o los archivos tocados, y si está pusheado; si hay una orquestación en curso, cómo retomarla (en Orca, `run-use --id <run>`) y qué workers siguen pendientes;
+   - **Estado:** qué quedó hecho, con el rango de commits o los archivos tocados, y si está pusheado; si hay una orquestación en curso, cómo retomarla (en Orca, `run-use --id <run>`) y qué workers siguen pendientes; si hay supervisor, la línea que indica la skill `supervisar`;
    - **Fuera del repo:** solo lo que cambió en la sesión;
    - **Lo próximo:** la tarea siguiente y cómo arrancarla;
    - **Pendientes:** solo los que no están en un archivo, o dónde están;
    - **Al arrancar:** "Antes de planear o delegar, devolvé en tres líneas el objetivo, los límites y el próximo paso. Preguntá solo si falta algo o hay contradicciones." Si hay una orquestación en curso, sumá antes: "Retomala y revisá su bandeja; no crees otra ni relances workers."
-3. **Abrirlo en una pestaña nueva de Orca** con `/orca-cli`: `terminal create` (no `agent launch`, que no elige perfil) en la carpeta del proyecto, con el comando del perfil de Claude que diga el usuario; si no lo dijo, preguntalo. Pasale el prompt desde un archivo temporal, con `--command` entre comillas simples para que lo expanda la pestaña: `'<comando> -- "$(cat <archivo>)"'`. Para `/clear` en este chat o sin Orca, entregalo en un solo bloque de código con: "Pegalo después de `/clear` o en un chat nuevo."
+3. **Abrirlo en una pestaña nueva de Orca** con `/orca-cli`: `terminal create` (no `agent launch`, que no elige perfil) en la carpeta del proyecto, con el comando del perfil de Claude que diga el usuario (si no lo dijo, preguntalo) más `--effort` con el nivel que tus instrucciones fijan para el rol de la sesión nueva. Pasale el prompt desde un archivo temporal, con `--command` entre comillas simples para que lo expanda la pestaña: `'<comando> -- "$(cat <archivo>)"'`. Después cerrá esta pestaña con `orca terminal close --terminal "$ORCA_TERMINAL_HANDLE" --tab`, como última acción y solo con la prueba de que la nueva tomó el trabajo: esperá `orca terminal wait --terminal <nueva> --for tui-idle`; si había orquestación, `orca orchestration run-current` tiene que dar null en esta sesión; si no, `orca terminal read --terminal <nueva>` tiene que mostrar sus tres líneas. Para `/clear` en este chat o sin Orca, entregalo en un solo bloque de código con: "Pegalo después de `/clear` o en un chat nuevo."
 
 ## Reglas
 
